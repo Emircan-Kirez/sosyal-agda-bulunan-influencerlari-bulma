@@ -1,23 +1,26 @@
+/* Emircan Kirez - Ch3rry */
+/* Son GÃ¼ncelleme: 22/12/2022 */
+
 #include <stdio.h>
 #include <stdlib.h>
 #include <string.h>
 
 #define MAX 255
 
-// kisilerin bilgilerini tuttugum struct yapým
+// kisilerin bilgilerini tuttugum struct yapim
 struct person{
 	int id;
 	char fname[25];
 	char lname[25];
 };
 
-// adjList'imdeki her bir node icin struct yapým
+// adjList'imdeki her bir node icin struct yapim
 struct node{
 	int id;
 	struct node *next;
 };
 
-// circular queue icin struct yapým
+// circular queue icin struct yapim
 typedef struct queue{
 	int qArray[MAX];
 	int firstIndex, rearIndex;
@@ -68,12 +71,12 @@ int main(){
 	do{
 		scanf("%d", &mode);
 		if(mode == 1){
-			validity = eleminate(inDegree, size, M, adjList); // M degerinin altinda kalan kiþileri ele ve ona gore bir validity dizisi dondur
+			validity = eleminate(inDegree, size, M, adjList); // M degerinin altinda kalan kiÃ¾ileri ele ve ona gore bir validity dizisi dondur
 			connection = countConnection(adjList, validity, size); // validler icin connection sayisi hesapla ve dondur
 			showInfluencers(people, inDegree, connection, size, X, Y); // X ve Y'ye gore influencer olan kisileri goster
 		}else if(mode == 2){
 			showInDegrees(inDegree, size); // in-degree dizisini goster
-			validity = eleminate(inDegree, size, M, adjList); // M degerinin altinda kalan kiþileri ele ve ona gore bir validity dizisi dondur
+			validity = eleminate(inDegree, size, M, adjList); // M degerinin altinda kalan kiÃ¾ileri ele ve ona gore bir validity dizisi dondur
 			connection = countConnection(adjList, validity, size); // validler icin connection sayisi hesapla ve dondur
 			showValidPeople(people, validity, inDegree, size); // elenmeyen kisileri goster
 			showInfluencersDetailedMode(people, inDegree, connection, size, X, Y); // influencer olan kisilerin detayli bilgilerini goster
@@ -185,7 +188,7 @@ int *eleminate(int *inDegree, int size, int M, struct node **adjList){
 		validity[i] = 1;
 	}
 	
-	for(i = 0 ; i < size; i++){ // baslangicta indegree deðerleri M'nin altinda olanlari queue'ya at
+	for(i = 0 ; i < size; i++){ // baslangicta indegree deÃ°erleri M'nin altinda olanlari queue'ya at
 		if(inDegree[i] < M){
 			enqueue(q, i);
 			validity[i] = 0; // queue'ya atilanlari invalid yapariz
@@ -212,9 +215,9 @@ int *eleminate(int *inDegree, int size, int M, struct node **adjList){
 
 /*--- QUEUE fonksiyonlari ---*/
 /*
- • Queue olarak "Circular Queue" mantigi kullanilmistir.
- • Queue'nin boyutu yuksek verilmistir ve bu yuzden isFull kontrolu yapilmamistir.
- • Queue bos olmadigi surece dequeue yapmadigimizdan dequeue icinde isEmpty kontrolu yapilmamistir.
+ â€¢ Queue olarak "Circular Queue" mantigi kullanilmistir.
+ â€¢ Queue'nin boyutu yuksek verilmistir ve bu yuzden isFull kontrolu yapilmamistir.
+ â€¢ Queue bos olmadigi surece dequeue yapmadigimizdan dequeue icinde isEmpty kontrolu yapilmamistir.
 */
 
 // queue olusturur ve baslangic degerlerini set eder
